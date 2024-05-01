@@ -1,12 +1,44 @@
+@media only screen and (max-width: 900px) {
+  .main {
+    flex-direction: column;
+    gap: 100px;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .main {
+    gap: 200px;
+  }
+}
+
+body {
+  margin: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: lightblue;
+}
+
+.main {
+  min-width: 600px;
+  min-height: 600px;
+  max-width: 1280px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
 .container {
-  max-width: 960px;
-  margin: auto;
+  max-width: 870px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  margin-top: 50px;
   box-sizing: border-box;
+}
+
+.controls {
+  flex: 0;
 }
 
 .container > div {
@@ -28,7 +60,7 @@ button {
   background-color: #ff362b;
   display: block;
   position: relative;
-  padding: 20px 40px;
+  padding: 20px 20px;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   text-shadow: 0px 1px 0px #000;
   filter: dropshadow(color=#000, offx=0px, offy=1px);

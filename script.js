@@ -9,13 +9,26 @@ let btnReset = document.createElement("button");
 btnReset.id = "reset";
 controls.appendChild(btnReset);
 btnReset.addEventListener("click", (event) => {
-  let squares = prompt(
-    "Please enter a number of squares per side you wish. No more than a 100",
-    "16"
+  let squares;
+  let valid = false;
+  squares = parseInt(
+    prompt(
+      "Please enter a number of squares per side you wish. No more than a 100",
+      "16"
+    )
   );
-  if (parseInt(squares) > 0) {
-    createGrid(parseInt(squares));
+  while (!valid) {
+    if (isNaN(squares)) {
+      squares = prompt("Please input a valid number");
+    } else if (parseInt(squares) > 100) {
+      squares = prompt("No more than a 100!");
+    } else if (parseInt(squares) <= 0) {
+      squares = prompt("Why are you the way that you are? More than 0!");
+    } else {
+      valid = true;
+    }
   }
+  createGrid(squares);
 });
 
 function createGrid(squaresPerSide) {
