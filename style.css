@@ -9,6 +9,9 @@
   .main {
     gap: 200px;
   }
+  .controls {
+    flex-direction: column;
+  }
 }
 
 body {
@@ -39,6 +42,8 @@ body {
 
 .controls {
   flex: 0;
+  display: flex;
+  gap: 20px;
 }
 
 .container > div {
@@ -104,5 +109,10 @@ button:after {
 
 #reset::before {
   content: "\1F501";
+  font-size: 5rem;
+}
+
+#rainbow::before {
+  content: "\1F308";
   font-size: 5rem;
 }

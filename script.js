@@ -1,13 +1,20 @@
 //Create a webpage with a 16x16 grid of square divs
-const BASECOLORS = ["red", "green", "blue"];
+const BASECOLORS = ["red", "green", "blue", "yellow"];
 
-const randomColor = Math.floor(Math.random() * 3 + 1);
+const randomColor = () => Math.floor(Math.random() * 4);
 
 const container = document.querySelector(".container");
 const controls = document.querySelector(".controls");
 let btnReset = document.createElement("button");
 btnReset.id = "reset";
 controls.appendChild(btnReset);
+
+let btnRainbow = document.createElement("button");
+btnRainbow.id = "rainbow";
+controls.appendChild(btnRainbow);
+
+let rainbowMode = false;
+
 btnReset.addEventListener("click", (event) => {
   let squares;
   let valid = false;
@@ -31,6 +38,18 @@ btnReset.addEventListener("click", (event) => {
   createGrid(squares);
 });
 
+btnRainbow.addEventListener("click", (event) => {
+  if (rainbowMode == false) {
+    container.removeEventListener("mouseover", paint);
+    container.addEventListener("mouseover", paintAlt);
+    rainbowMode = true;
+  } else {
+    container.removeEventListener("mouseover", paintAlt);
+    container.addEventListener("mouseover", paint);
+    rainbowMode = false;
+  }
+});
+
 function createGrid(squaresPerSide) {
   container.replaceChildren();
   for (let i = 1; i <= squaresPerSide ** 2; i++) {
@@ -44,6 +63,13 @@ function createGrid(squaresPerSide) {
 function paint(eventObject) {
   let target = document.getElementById(eventObject.target.id);
   target.style.background = "black";
+  if (eventObject.target.style.opacity == "") target.style.opacity = 0.7;
+  else target.style.opacity = +eventObject.target.style.opacity + 0.03;
+}
+
+function paintAlt(eventObject) {
+  let target = document.getElementById(eventObject.target.id);
+  target.style.background = BASECOLORS[randomColor()];
   if (eventObject.target.style.opacity == "") target.style.opacity = 0.7;
   else target.style.opacity = +eventObject.target.style.opacity + 0.03;
 }
