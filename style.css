@@ -33,6 +33,7 @@ body {
 
 .container {
   max-width: 870px;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -51,7 +52,7 @@ body {
   flex-shrink: 1;
   background: thistle;
   content: "";
-  border: solid, 1px, grey;
+  border: solid 1px grey;
   aspect-ratio: 1 / 1;
   box-sizing: inherit;
 }
